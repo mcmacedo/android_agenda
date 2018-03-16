@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.mcmacedo.agenda.FormularioActivity">
+
+        <EditText android:id="@+id/formulario_nome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome" />
+
+        <EditText android:id="@+id/formulario_endereco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Endereco" />
+
+        <EditText android:id="@+id/formulario_telefone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Telefone" />
+
+        <EditText android:id="@+id/formulario_site"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Site" />
+
+        <RatingBar android:id="@+id/formulario_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:max="10"
+            android:numStars="5" />
+
+        <Button android:id="@+id/formulario_btn_salvar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salvar" />
+
+    </LinearLayout>
+
+</ScrollView>
