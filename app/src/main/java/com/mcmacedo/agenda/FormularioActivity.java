@@ -1,5 +1,6 @@
 package com.mcmacedo.agenda;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,8 +22,12 @@ public class FormularioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario);
-
         this.helper = new FormularioHelper(this);
+
+        Intent intent = getIntent();
+        Aluno aluno = (Aluno) intent.getSerializableExtra("aluno");
+        if (aluno != null)
+            this.helper.preencheFormulario(aluno);
     }
 
     @Override
@@ -35,15 +40,17 @@ public class FormularioActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         switch (item.getItemId()) {
             case R.id.menu_formulario_ok:
                 Aluno aluno = this.helper.getInstanciaAluno();
                 AlunoDAO dao = new AlunoDAO(this);
-                dao.insere(aluno);
+                if (aluno.getId() != null)
+                    dao.atualiza(aluno);
+                else
+                    dao.insere(aluno);
                 dao.close();
                 Toast.makeText(this,
-                        "Aluno " + aluno.getNome() + " salvo." , Toast.LENGTH_SHORT).show();
+                        "Aluno " + aluno.getNome() + " salvo.", Toast.LENGTH_SHORT).show();
                 finish();
                 break;
         }
